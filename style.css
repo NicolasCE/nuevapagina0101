@@ -1,0 +1,206 @@
+/* Tipografía base */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fffaf5;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #e9c539;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.navbar-item strong {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+/* Hero section */
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* Tarjetas de productos */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card-content p {
+  margin-bottom: 0.5em;
+}
+
+/* Imágenes dentro de cards */
+.card-image img {
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+}
+
+/* Botón agregar al carrito */
+.button.is-success {
+  background-color: #28a745;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button.is-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Carrito */
+#carrito-items li {
+  background-color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  list-style: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+#carrito-items li:hover {
+  transform: translateX(4px);
+  background-color: #fdf2cc;
+}
+
+/* Botón vaciar carrito */
+#vaciar-carrito {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#vaciar-carrito:hover {
+  background-color: #c62828;
+  transform: scale(1.05);
+}
+
+/* Carrito box animación */
+.box {
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* Títulos */
+.title {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* Animaciones adicionales con Animate.css (ya cargado desde el HTML) */
+.animate__fadeInLeft {
+  --animate-duration: 0.5s;
+}
+
+.animate__fadeInUp {
+  --animate-duration: 0.7s;
+}
+
+  
+
+
+
+
+/*modo oscuro*/
+/* 🌙 Modo oscuro elegante */
+body.modo-oscuro {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Navbar en modo oscuro */
+body.modo-oscuro .navbar {
+  background-color: #1f1f1f;
+}
+
+body.modo-oscuro .navbar-item,
+body.modo-oscuro .navbar-item strong {
+  color: #f5f5f5;
+}
+
+/* Hero section */
+body.modo-oscuro .hero {
+  background-color: #2a2a2a;
+  background-image: none;
+  color: #f0f0f0;
+}
+
+/* Títulos en modo oscuro */
+body.modo-oscuro h1,
+body.modo-oscuro h2,
+body.modo-oscuro .title,
+body.modo-oscuro .subtitle {
+  color: #f8f8f8;
+}
+
+/* Cards de productos */
+body.modo-oscuro .card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+/* Textos dentro del card */
+body.modo-oscuro .card-content p {
+  color: #dcdcdc;
+}
+
+/* Imagen del card */
+body.modo-oscuro .card-image img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* Botones */
+body.modo-oscuro .button.is-success {
+  background-color: #43a047;
+  color: #fff;
+}
+
+body.modo-oscuro .button.is-success:hover {
+  background-color: #388e3c;
+}
+
+body.modo-oscuro .button.is-danger {
+  background-color: #e53935;
+  color: #fff;
+}
+
+body.modo-oscuro .button.is-danger:hover {
+  background-color: #c62828;
+}
+
+/* Carrito */
+body.modo-oscuro .box {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #2c2c2c;
+}
+
+body.modo-oscuro #carrito-items li {
+  background-color: #292929;
+  color: #e0e0e0;
+  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Transiciones suaves */
+body,
+.card,
+.button,
+.box,
+.navbar,
+.hero {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
