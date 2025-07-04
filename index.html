@@ -1,57 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La ruta del sabor</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar" role="navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="#">
-            🍔 <strong>La Ruta del Sabor</strong>
-          </a>
-          <a role="button" class="navbar-item" id="toggle-tema" style="cursor:pointer">
-            🌙 Modo oscuro
-          </a>
-        </div>
-      </nav>
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          🍔 <strong>La Ruta del Sabor</strong>
+        </a>
+        <a
+          role="button"
+          class="navbar-item"
+          id="toggle-tema"
+          style="cursor: pointer"
+        >
+          🌙 Modo oscuro
+        </a>
+      </div>
+    </nav>
 
-      <section class="hero is-warning is-medium">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <h1 class="title">¡Bienvenido a La Ruta del Sabor!</h1>
-            <h2 class="subtitle">Comida rápida con corazón chileno</h2>
+    <section class="hero is-warning is-medium">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title">¡Bienvenido a La Ruta del Sabor!</h1>
+          <h2 class="subtitle">Comida rápida con corazón chileno</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="title has-text-centered">Nuestro Menú</h2>
+        <div class="columns is-multiline" id="menu-comidas"></div>
+      </div>
+    </section>
+
+    <section class="section has-background-light">
+      <div class="container">
+        <div class="box has-shadow-lg animate__animated animate__fadeInUp">
+          <h2 class="title is-4 has-text-weight-bold">🛒 Tu Carrito</h2>
+          <div id="carrito-content">
+            <p id="carrito-vacio" class="has-text-grey">
+              Tu carrito está vacío.
+            </p>
+            <ul id="carrito-items" class="mt-3"></ul>
+            <p id="carrito-total" class="has-text-weight-semibold mt-4"></p>
+            <button id="vaciar-carrito" class="button is-danger mt-4">
+              Vaciar carrito
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="box animate__animated animate__fadeInUp" id="formulario-usuario">
+          <h3 class="title is-5">📋 Detalles del pedido</h3>
     
-      <section class="section">
-        <div class="container">
-          <h2 class="title has-text-centered">Nuestro Menú</h2>
-          <div class="columns is-multiline" id="menu-comidas">
-          </div>
-        </div>
-      </section>
-
-      <section class="section has-background-light">
-        <div class="container">
-          <div class="box has-shadow-lg animate__animated animate__fadeInUp">
-            <h2 class="title is-4 has-text-weight-bold">🛒 Tu Carrito</h2>
-            <div id="carrito-content">
-              <p id="carrito-vacio" class="has-text-grey">Tu carrito está vacío.</p>
-              <ul id="carrito-items" class="mt-3"></ul>
-              <p id="carrito-total" class="has-text-weight-semibold mt-4"></p>
-              <button id="vaciar-carrito" class="button is-danger mt-4">Vaciar carrito</button>
+          <div class="field">
+            <label class="label">Nombre y Apellido</label>
+            <div class="control">
+              <input class="input" type="text" id="nombre-usuario" placeholder="Ej: Pepe Perez">
             </div>
           </div>
+                
+          <div class="field">
+            <label class="label">Dirección, Localidad
+            </label>
+            <div class="control">
+              <input class="input" type="text" id="direccion-usuario" placeholder="Ej: Calle 123, Ciudad">
+            </div>
+          </div>
+    
+          <div class="has-text-centered mt-4">
+            <button id="btn-wsp" class="button is-primary is-medium animate__animated animate__pulse">
+              Enviar pedido por WhatsApp
+            </button>
+          </div>
         </div>
-      </section>
-      
-</body>
-<script src="script.js"></script>
+      </div>
+    </section>
+    
+  </body>
+  <script src="script.js"></script>
 </html>
