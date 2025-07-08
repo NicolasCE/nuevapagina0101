@@ -50,14 +50,14 @@ comidas.forEach((comida, index) => {
   contenedor.appendChild(col);
 });
 
-// Escuchar clicks en botones
+// Escuchar clicks en botones "Agregar al carrito"
 document.addEventListener("click", function (e) {
   if (e.target.matches("button.is-success")) {
     const index = e.target.getAttribute("data-index");
     const producto = comidas[index];
     agregarAlCarrito(producto);
 
-    // --- SweetAlert2 ---
+    // SweetAlert2
     Swal.fire({
       title: "Producto agregado 🛒",
       text: `${producto.nombre} fue agregado al carrito`,
@@ -73,13 +73,22 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// Agregar al carrito y actualizar vista
+// Agregar al carrito con manejo de cantidad
 function agregarAlCarrito(producto) {
-  carrito.push(producto);
+  const index = carrito.findIndex(item => item.nombre === producto.nombre);
+
+  if (index !== -1) {
+    // Si ya está, aumenta cantidad
+    carrito[index].cantidad += 1;
+  } else {
+    // Si no está, agregar nuevo con cantidad 1
+    carrito.push({ ...producto, cantidad: 1 });
+  }
+
   actualizarCarrito();
 }
 
-// Mostrar el carrito visualmente
+// Actualizar carrito mostrando cantidades, subtotal y botones de control
 function actualizarCarrito() {
   carritoItems.innerHTML = "";
   let total = 0;
@@ -92,22 +101,46 @@ function actualizarCarrito() {
 
   carritoVacio.style.display = "none";
 
-  carrito.forEach((item) => {
+  carrito.forEach((item, idx) => {
     const li = document.createElement("li");
-    li.textContent = `🍽️ ${item.nombre} - $${item.precio.toLocaleString(
-      "es-CL"
-    )}`;
+    const subtotal = item.precio * item.cantidad;
+    li.innerHTML = `
+      🍽️ ${item.nombre} - $${item.precio.toLocaleString("es-CL")} x ${item.cantidad} = $${subtotal.toLocaleString("es-CL")}
+      <button class="button is-small is-info ml-2" data-accion="sumar" data-index="${idx}">+</button>
+      <button class="button is-small is-warning ml-1" data-accion="restar" data-index="${idx}">-</button>
+      <button class="button is-small is-danger ml-1" data-accion="eliminar" data-index="${idx}">x</button>
+    `;
     li.classList.add("animate__animated", "animate__fadeInLeft");
-    li.style.setProperty("--animate-duration", "0.5s");
-    li.style.setProperty("--animate-delay", "0.1s");
     carritoItems.appendChild(li);
-    total += item.precio;
+
+    total += subtotal;
   });
 
   carritoTotal.textContent = `Total: $${total.toLocaleString("es-CL")}`;
 }
 
-// Escuchar el botón "Vaciar carrito" con confirmación
+// Manejar clicks en botones +, -, eliminar dentro del carrito
+carritoItems.addEventListener("click", function (e) {
+  if (e.target.tagName === "BUTTON") {
+    const accion = e.target.getAttribute("data-accion");
+    const idx = parseInt(e.target.getAttribute("data-index"));
+
+    if (accion === "sumar") {
+      carrito[idx].cantidad += 1;
+    } else if (accion === "restar") {
+      carrito[idx].cantidad -= 1;
+      if (carrito[idx].cantidad <= 0) {
+        carrito.splice(idx, 1);
+      }
+    } else if (accion === "eliminar") {
+      carrito.splice(idx, 1);
+    }
+
+    actualizarCarrito();
+  }
+});
+
+// Botón Vaciar carrito con confirmación
 document.getElementById("vaciar-carrito").addEventListener("click", () => {
   Swal.fire({
     title: "¿Vaciar carrito?",
@@ -150,11 +183,7 @@ document.getElementById("toggle-tema").addEventListener("click", () => {
   }
 });
 
-
-
-
-
-// Función para generar el mensaje de WhatsApp
+// Función para generar el mensaje de WhatsApp con cantidades
 function generarMensajeWhatsApp() {
   const nombre = document.getElementById("nombre-usuario").value.trim();
   const direccion = document.getElementById("direccion-usuario").value.trim();
@@ -181,8 +210,9 @@ function generarMensajeWhatsApp() {
   let total = 0;
 
   carrito.forEach((item, index) => {
-    mensaje += `🍔 ${index + 1}. ${item.nombre} - $${item.precio.toLocaleString("es-CL")}\n`;
-    total += item.precio;
+    const subtotal = item.precio * item.cantidad;
+    mensaje += `🍔 ${index + 1}. ${item.nombre} - $${item.precio.toLocaleString("es-CL")} x ${item.cantidad} = $${subtotal.toLocaleString("es-CL")}\n`;
+    total += subtotal;
   });
 
   mensaje += `\n🧾 Total: $${total.toLocaleString("es-CL")}\n`;
@@ -202,6 +232,27 @@ document.getElementById("btn-wsp").addEventListener("click", function (e) {
     window.open(enlace, "_blank");
   }
 });
+
+
+//mapita
+// Modal de mapa
+const btnMapa = document.getElementById("btn-mapa");
+const modalMapa = document.getElementById("modal-mapa");
+const modalClose = modalMapa.querySelector(".modal-close");
+const modalBg = modalMapa.querySelector(".modal-background");
+
+btnMapa.addEventListener("click", () => {
+  modalMapa.classList.add("is-active");
+});
+
+modalClose.addEventListener("click", () => {
+  modalMapa.classList.remove("is-active");
+});
+
+modalBg.addEventListener("click", () => {
+  modalMapa.classList.remove("is-active");
+});
+
 
 
 

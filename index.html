@@ -21,6 +21,7 @@
         <a class="navbar-item" href="#">
           🍔 <strong>La Ruta del Sabor</strong>
         </a>
+        
         <a
           role="button"
           class="navbar-item"
@@ -29,6 +30,9 @@
         >
           🌙 Modo oscuro
         </a>
+      </div>
+      <div class="navbar-end mr-4">
+        <span id="usuario-logueado" class="navbar-item has-text-weight-semibold"></span>
       </div>
     </nav>
 
@@ -94,6 +98,33 @@
         </div>
       </div>
     </section>
+    
+    <section class="section has-text-centered">
+      <button id="btn-mapa" class="button is-link is-medium">
+        📍 Cómo llegar
+      </button>
+    </section>
+    
+    <!-- Modal de mapa -->
+    <div class="modal" id="modal-mapa">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box" style="overflow: hidden; border-radius: 12px">
+          <iframe
+            id="iframe-mapa"
+            width="100%"
+            height="400"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6660.684904934662!2d-72.41945!3d-35.333688!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x966b5f90d71bfffd%3A0x9e8617a276f8bb2a!2sCalle%20Los%20Aromos%2C%20Constituci%C3%B3n%2C%20Maule!5e0!3m2!1ses-419!2scl!4v1720385678912!5m2!1ses-419!2scl"
+          ></iframe>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    
     
   </body>
   <script src="script.js"></script>

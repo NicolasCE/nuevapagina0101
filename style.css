@@ -127,3 +127,68 @@ body.modo-oscuro #formulario-usuario .input:focus {
     transform: translateY(0);
   }
 }
+
+
+/*Botones carrito*/
+/* Botones dentro del carrito */
+#carrito-items button {
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #fff;
+}
+
+/* Botón sumar (+) - color verde */
+#carrito-items button[data-accion="sumar"] {
+  background-color: #48c774; /* Bulma verde */
+}
+
+#carrito-items button[data-accion="sumar"]:hover {
+  background-color: #3ebf66;
+}
+
+/* Botón restar (−) - color amarillo */
+#carrito-items button[data-accion="restar"] {
+  background-color: #ffdd57; /* Bulma amarillo */
+  color: #4a4a4a;
+}
+
+#carrito-items button[data-accion="restar"]:hover {
+  background-color: #ffd83d;
+}
+
+/* Botón eliminar (×) - color rojo */
+#carrito-items button[data-accion="eliminar"] {
+  background-color: #f14668; /* Bulma rojo */
+}
+
+#carrito-items button[data-accion="eliminar"]:hover {
+  background-color: #e73c5f;
+}
+
+/*mapita*/
+
+#btn-mapa {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#btn-mapa:hover {
+  transform: scale(1.05);
+  background-color: #3273dc;
+  color: #fff;
+}
